@@ -1,0 +1,15 @@
+<h1>Sign up</h1>
+
+<section id="signup">
+    <%= form_with model: @user do |form| %>
+        <div>
+            <%= form.label :username %>
+            <%= form.text_field :username %>
+        </div>
+        <div>
+            <%= form.label :password %>
+            <%= form.password_field :password %>
+        </div>
+        <div><%= form.submit %></div>
+    <% end %>
+</section>

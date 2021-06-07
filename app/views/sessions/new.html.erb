@@ -1,0 +1,20 @@
+<h1>Welcome to Tabstore</h1>
+
+<section id="login">
+    <%= form_with url: "/login" do |form| %>
+        <div>
+            <%= form.label :username %>
+            <%= form.text_field :username %>
+        </div>
+        <div>
+            <%= form.label :password %>
+            <%= form.password_field :password %>
+        </div>
+        <div><%= form.submit "Login" %></div>
+    <% end %>
+</section>
+
+<section id="signup">
+    <%= button_to "Sign Up", new_user_path, method: :get %>
+</section>
+

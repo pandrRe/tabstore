@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_154024) do
+ActiveRecord::Schema.define(version: 2021_06_07_212313) do
 
   create_table "items", force: :cascade do |t|
     t.string "description", null: false
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 2021_06_07_154024) do
     t.index ["merchant_id"], name: "index_purchases_on_merchant_id"
     t.index ["purchase_import_datum_id"], name: "index_purchases_on_purchase_import_datum_id"
     t.index ["purchaser_id"], name: "index_purchases_on_purchaser_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "purchases", "items"
