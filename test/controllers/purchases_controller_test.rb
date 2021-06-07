@@ -2,23 +2,20 @@ require 'test_helper'
 
 class PurchasesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get purchases_index_url
+    get purchases_url
     assert_response :success
   end
 
-  test "should get new" do
-    get purchases_new_url
-    assert_response :success
-  end
+  test "should import purchases described in file" do
+    file = fixture_file_upload('files/test_data1.tab')
+    post purchases_url, params: {file: file}
 
-  test "should get create" do
-    get purchases_create_url
-    assert_response :success
-  end
+    assert Purchaser.where(:name => 'Douglas').exists?
+    assert Purchaser.where(:name => 'Givanildo').exists?
 
-  test "should get show" do
-    get purchases_show_url
-    assert_response :success
-  end
+    import_datum = PurchaseImportDatum.find_by(data: file_fixture('test_data1.tab').read.force_encoding("UTF-8"))
+    assert !import_datum.nil?
+    assert import_datum.purchases.length == 2
 
+  end
 end

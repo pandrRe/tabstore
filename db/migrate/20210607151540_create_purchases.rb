@@ -4,7 +4,7 @@ class CreatePurchases < ActiveRecord::Migration[6.0]
       t.references :item, null: false, foreign_key: true
       t.references :purchaser, null: false, foreign_key: true
       t.references :merchant, null: false, foreign_key: true
-      t.integer :count
+      t.integer :count, null: false
 
       t.timestamps
     end

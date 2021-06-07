@@ -1,2 +1,46 @@
-<h1>Purchases#index</h1>
-<p>Find me in app/views/purchases/index.html.erb</p>
+<h1>Purchases</h1>
+
+<style>
+table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+</style>
+
+<section>
+    <b>Total All-time Gross Income:</b> <%= @total_value %><br>
+    <b>Total Gross Income From Last Import:</b> <%= @last_import_value %><br>
+    <%= link_to "Import Purchases", new_purchase_path %><br><br>
+</section>
+
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Purchaser Name</th>
+        <th>Item Description</th>
+        <th>Item Price</th>
+        <th>Purchase Count</th>
+        <th>Merchant Address</th>
+        <th>Merchant Name</th>
+        <th>Date</th>
+    </thead>
+    <tbody>
+        <% @purchases.each do |purchase| %>
+            <tr>
+                <td><%= purchase.id %></td>
+                <td><%= purchase.purchaser.name %></td>
+                <td><%= purchase.item.description %></td>
+                <td><%= purchase.item.price %></td>
+                <td><%= purchase.count %></td>
+                <td><%= purchase.merchant.address %></td>
+                <td><%= purchase.merchant.name %></td>
+                <td><%= purchase.created_at %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+

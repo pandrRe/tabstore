@@ -4,10 +4,12 @@ one:
   item: one
   purchaser: one
   merchant: one
-  count: 1
+  purchase_import_datum: one
+  count: 4
 
 two:
   item: two
   purchaser: two
   merchant: two
-  count: 1
+  purchase_import_datum: two
+  count: 2
